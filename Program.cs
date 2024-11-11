@@ -18,10 +18,14 @@ namespace ST10254164_CLDV6212_GR2_part1
             builder.Services.AddControllersWithViews();
 
             // Register your custom services
-            builder.Services.AddSingleton<BlobService>();
-            builder.Services.AddSingleton<TableService>();
-            builder.Services.AddSingleton<QueueService>();
-            builder.Services.AddSingleton<FileService>();
+            builder.Services.AddHttpClient();
+            builder.Services.AddScoped<CustomerService>();
+
+            // Register the services for dependency injection
+            builder.Services.AddScoped<CustomerService>();
+            builder.Services.AddScoped<BlobService>();
+            builder.Services.AddScoped<FileService>();
+
 
             var app = builder.Build();
 
